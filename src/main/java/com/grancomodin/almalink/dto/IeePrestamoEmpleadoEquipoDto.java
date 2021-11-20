@@ -11,11 +11,14 @@ public class IeePrestamoEmpleadoEquipoDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Long iee_equipo_id;
+	private String iee_equipo_nombre;
 	private Long gral_empleado_id;
+	private String gral_empleado_nombre;
 	private Short prestado;
 	private Date fecha_prestamo;
 	private Date fecha_devolucion_estimada;
 	private Long gral_encargado_id;
+	private String gral_encargado_nombre;
 	private Long gral_usr_id;
 	
 	public IeePrestamoEmpleadoEquipoDto(Long id, Long iee_equipo_id, Long gral_empleado_id, Short prestado,
@@ -29,6 +32,55 @@ public class IeePrestamoEmpleadoEquipoDto implements Serializable{
 		this.fecha_devolucion_estimada = fecha_devolucion_estimada;
 		this.gral_encargado_id = gral_encargado_id;
 	}
+	public IeePrestamoEmpleadoEquipoDto(Long id, String iee_equipo_nombre, String gral_empleado_nombre, Short prestado,
+			Date fecha_prestamo, Date fecha_devolucion_estimada, String gral_encargado_nombre) {
+		super();
+		this.id = id;
+		this.iee_equipo_nombre = iee_equipo_nombre;
+		this.gral_empleado_nombre = gral_empleado_nombre;
+		this.prestado = prestado;
+		this.fecha_prestamo = fecha_prestamo;
+		this.fecha_devolucion_estimada = fecha_devolucion_estimada;
+		this.gral_encargado_nombre = gral_encargado_nombre;
+	}
+	
+	
+	public String getIee_equipo_nombre() {
+		return iee_equipo_nombre;
+	}
+
+
+
+	public void setIee_equipo_nombre(String iee_equipo_nombre) {
+		this.iee_equipo_nombre = iee_equipo_nombre;
+	}
+
+
+
+	public String getGral_empleado_nombre() {
+		return gral_empleado_nombre;
+	}
+
+
+
+	public void setGral_empleado_nombre(String gral_empleado_nombre) {
+		this.gral_empleado_nombre = gral_empleado_nombre;
+	}
+
+
+
+	public String getGral_encargado_nombre() {
+		return gral_encargado_nombre;
+	}
+
+
+
+	public void setGral_encargado_nombre(String gral_encargado_nombre) {
+		this.gral_encargado_nombre = gral_encargado_nombre;
+	}
+
+
+
 	public Long getGral_usr_id() {
 		return gral_usr_id;
 	}

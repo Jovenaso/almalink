@@ -1,7 +1,6 @@
 package com.grancomodin.almalink.dto;
 
 import java.io.Serializable;
-
 public class GralColorDto implements Serializable{
 
 	/**

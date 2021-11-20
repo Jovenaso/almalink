@@ -17,6 +17,7 @@ public class GralEmpleadoDto implements Serializable{
 	private String nombre;
 	private String apellido;
 	private Long puesto_id;
+	private String puesto_titulo;
 	private Long gral_empresa_id;
 	private Long gral_usr_id;
 	
@@ -29,6 +30,24 @@ public class GralEmpleadoDto implements Serializable{
 		this.apellido = apellido;
 		this.puesto_id = puesto_id;
 	}
+	public GralEmpleadoDto(Long id, String nombre, String apellido, String puesto_titulo) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.puesto_titulo = puesto_titulo;
+	}
+	
+	public String getPuesto_titulo() {
+		return puesto_titulo;
+	}
+
+
+	public void setPuesto_titulo(String puesto_titulo) {
+		this.puesto_titulo = puesto_titulo;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

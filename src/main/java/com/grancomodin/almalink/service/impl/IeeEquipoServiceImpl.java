@@ -1,6 +1,7 @@
 package com.grancomodin.almalink.service.impl;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.grancomodin.almalink.dao.IeeEquipoDao;
 import com.grancomodin.almalink.dto.IeeEquipoDto;
+import com.grancomodin.almalink.generic.BusquedaListaPaginar;
 import com.grancomodin.almalink.generic.StatusProcessService;
 import com.grancomodin.almalink.model.GralColor;
 import com.grancomodin.almalink.model.GralMarca;
@@ -131,6 +133,28 @@ public class IeeEquipoServiceImpl implements IeeEquipoService {
 			baja.setFecha_baja(new Date());
 			dao.save(baja);
 			sps = new StatusProcessService("Operación exitosa", HttpStatus.CREATED);
+			
+		} catch (DataAccessException ex) {
+			ex.printStackTrace();
+			sps = new StatusProcessService("Ocurrió un error relacionado con la base de datos, "+ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			sps = new StatusProcessService("Ocurrió un error inesperado", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		return sps;
+	}
+
+
+	@Override
+	public StatusProcessService busqueda(Map<String, Object> conditions) {
+		// TODO Auto-generated method stub
+		StatusProcessService sps = null;
+		try {
+			BusquedaListaPaginar blp = dao.busqueda(conditions);
+			sps = new StatusProcessService("Operación exitosa", HttpStatus.CREATED);
+			sps.setContenido(blp);
 			
 		} catch (DataAccessException ex) {
 			ex.printStackTrace();

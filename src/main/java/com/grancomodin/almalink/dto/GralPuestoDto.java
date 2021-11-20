@@ -12,6 +12,11 @@ public class GralPuestoDto {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 	}
+	public GralPuestoDto(Long id, String titulo) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+	}
 	public GralPuestoDto() {
 		super();
 	}

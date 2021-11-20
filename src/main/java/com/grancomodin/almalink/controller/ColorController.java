@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grancomodin.almalink.dto.GralColorDto;
+import com.grancomodin.almalink.generic.BusquedaListaPaginar;
 import com.grancomodin.almalink.generic.StatusProcessService;
 import com.grancomodin.almalink.service.GralColorService;
 
@@ -47,7 +48,24 @@ public class ColorController {
 	public ResponseEntity<?> get(@PathVariable Long id) {
 		response = new HashMap<>();
 		StatusProcessService status = service.getById(id);
-		response.put("contenido", status.getMensaje());
+		response.put("contenido", status.getContenido());
+		response.put("mensaje", status.getMensaje());
+		return new ResponseEntity<>(response, status.getHttpStatus());
+	}
+	@ApiOperation(value = "busqueda", notes = "")
+	@ApiResponses({
+			@ApiResponse(code = HttpServletResponse.SC_OK, message = "La transacción sé ha realizado correctamente"),
+			@ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Ha ocurrido un error durante la consulta a la base de datos"),
+			@ApiResponse(code = HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, message = "Ha ocurrido un error al momento de descomprimir una imagen"),
+			@ApiResponse(code = HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message = "Ha ocurrido un error inesperado durante la operación"),
+			@ApiResponse(code = HttpServletResponse.SC_UNAUTHORIZED, message = "Es necesario estar autenticado para acceder a este recurso"),
+			@ApiResponse(code = HttpServletResponse.SC_FORBIDDEN, message = "El recurso no está disponible para éste usuario") })
+	@PostMapping("/busqueda")
+	public ResponseEntity<?> busqueda(@RequestBody Map<String, Object> conditions) {
+		response = new HashMap<>();
+		StatusProcessService status = service.busqueda(conditions);
+		response.put("contenido", status.getContenido());
+		response.put("mensaje", status.getMensaje());
 		return new ResponseEntity<>(response, status.getHttpStatus());
 	}
 	@ApiOperation(value = "Baja", notes = "")

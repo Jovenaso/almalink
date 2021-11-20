@@ -1,8 +1,11 @@
 package com.grancomodin.almalink.dao;
 
+import java.util.Map;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.grancomodin.almalink.dto.IeeEquipoDto;
+import com.grancomodin.almalink.generic.BusquedaListaPaginar;
 import com.grancomodin.almalink.model.IeeEquipo;
 
 public interface IeeEquipoDao extends JpaRepository<IeeEquipo, Long>{
@@ -12,4 +15,5 @@ public interface IeeEquipoDao extends JpaRepository<IeeEquipo, Long>{
 			+ "ie.precio, ie.ubicacion," + 
 			"ie.cantidad) from IeeEquipo ie where ie.id = ?1")
 	IeeEquipoDto findByIdDto(Long id);
+	BusquedaListaPaginar busqueda(Map<String, Object> conditions);
 }

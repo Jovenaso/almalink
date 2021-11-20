@@ -46,6 +46,7 @@ public class UsuarioController {
 	public ResponseEntity<?> get(@PathVariable Long id) {
 		response = new HashMap<>();
 		StatusProcessService status = service.getById(id);
+		response.put("contenido", status.getContenido());
 		response.put("mensaje", status.getMensaje());
 		return new ResponseEntity<>(response, status.getHttpStatus());
 	}

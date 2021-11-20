@@ -17,13 +17,13 @@ public class IeeEquipoDto implements Serializable{
 	private String foto;
 	private Long gral_color_id;
 	private Long gral_marca_id;
+	private String gral_color_titulo;
+	private String gral_marca_titulo;
 	private BigDecimal precio;
 	private String ubicacion;
 	private Integer cantidad;
 	private Long gral_empresa_id;
 	private Long gral_usr_id;
-	
-	
 	
 	public IeeEquipoDto(Long id, String nombre, String codigo_barra, String referencia, String unidad_medida,
 			String foto, Long gral_color_id, Long gral_marca_id, BigDecimal precio, String ubicacion,
@@ -41,8 +41,36 @@ public class IeeEquipoDto implements Serializable{
 		this.ubicacion = ubicacion;
 		this.cantidad = cantidad;
 	}
+	public IeeEquipoDto(Long id, String nombre, String codigo_barra, String referencia, String unidad_medida, String gral_color_titulo, String gral_marca_titulo, BigDecimal precio, String ubicacion,
+			Integer cantidad) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.codigo_barra = codigo_barra;
+		this.referencia = referencia;
+		this.unidad_medida = unidad_medida;
+		this.foto = foto;
+		this.gral_color_titulo = gral_color_titulo;
+		this.gral_marca_titulo = gral_marca_titulo;
+		this.precio = precio;
+		this.ubicacion = ubicacion;
+		this.cantidad = cantidad;
+	}
 	
 	
+	
+	public String getGral_color_titulo() {
+		return gral_color_titulo;
+	}
+	public void setGral_color_titulo(String gral_color_titulo) {
+		this.gral_color_titulo = gral_color_titulo;
+	}
+	public String getGral_marca_titulo() {
+		return gral_marca_titulo;
+	}
+	public void setGral_marca_titulo(String gral_marca_titulo) {
+		this.gral_marca_titulo = gral_marca_titulo;
+	}
 	public Long getGral_usr_id() {
 		return gral_usr_id;
 	}
